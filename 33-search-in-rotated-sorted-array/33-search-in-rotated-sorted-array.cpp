@@ -11,15 +11,15 @@ public:
             if(nums[mid]==target)
                 return mid;
             
-            else if(nums[mid]>=nums[l]) {
-                if((nums[mid]>target)&&(nums[l]<=target))
+            else if(nums[mid]>=nums[0]) {
+                if((nums[mid]>target)&&(nums[0]<=target))
                     r = mid-1;
                 else
                     l = mid+1;
             }
                     
             else {
-                if((nums[r]>=target)&&(nums[mid]<target))
+                if((nums[nums.size()-1]>=target)&&(nums[mid]<target))
                     l = mid+1;
                 else 
                     r = mid-1;
