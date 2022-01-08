@@ -2,7 +2,7 @@ class Solution {
 public:
     int countNegatives(vector<vector<int>>& grid) {
         int row = grid.size(), col = grid[0].size(); 
-        int res = 0, lastNeg = col - 1;
+        int res = 0;
         for (int i = 0; i < row; i++) {
             
             if (grid[i][0] < 0) {
@@ -13,7 +13,7 @@ public:
             if (grid[i][col - 1] > 0)
                 continue;
            
-            int l = 0, r = lastNeg;
+            int l = 0, r = col-1;
             while (l <= r) {
                 int m = (r + l)/2;
                 if (grid[i][m] < 0) {
@@ -22,7 +22,7 @@ public:
                     l = m + 1;
             }
             
-            res += (col - l); //lastNeg = l;
+            res += (col - l); 
         }
         return res;
     }
