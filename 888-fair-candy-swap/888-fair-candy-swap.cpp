@@ -3,22 +3,23 @@ public:
       vector<int> fairCandySwap(vector<int>& aliceSizes, vector<int>& bobSizes) {
       //  sort(aliceSizes.begin(), aliceSizes.end());
         sort(bobSizes.begin(), bobSizes.end());
-        int totalA = accumulate(aliceSizes.begin(), aliceSizes.end(), 0);
-        int totalB = accumulate(bobSizes.begin(), bobSizes.end(), 0);
-        vector<int> ans;
+        int sumA = accumulate(aliceSizes.begin(), aliceSizes.end(), 0);
+        int sumB = accumulate(bobSizes.begin(), bobSizes.end(), 0);
+      
         for(int i = 0; i< aliceSizes.size(); i++){
-            int seek = (totalA + totalB)/2 - totalA + aliceSizes[i];
+            int diff = (sumB - sumA)/2; 
+            int target = diff + aliceSizes[i];
             int low = 0, high = bobSizes.size() - 1;
             while(low <= high){
-                int mid = low + (high - low)/2;
-                if(bobSizes[mid] == seek){
-                    ans = {aliceSizes[i], bobSizes[mid]};
-                    return ans;
+                int mid = (high + low)/2;
+                if(bobSizes[mid] == target){
+                    return {aliceSizes[i], bobSizes[mid]};
+                    
                 }
-                else if(bobSizes[mid] > seek) high = mid - 1;
+                else if(bobSizes[mid] > target) high = mid - 1;
                 else low = mid + 1;
             }
         }
-        return ans;
+        return {};
     }
 };
