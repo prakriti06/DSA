@@ -20,7 +20,7 @@ public:
              }
            
              else{
-                 if((nums[mid]<target)&&(target<=nums[end]))
+                 if((nums[mid]<target)&&(target<=nums[nums.size()-1]))
                      start = mid+1;
                  else 
                      end = mid-1;
