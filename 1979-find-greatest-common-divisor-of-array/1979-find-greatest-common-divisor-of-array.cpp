@@ -1,22 +1,21 @@
 class Solution {
 public:
-    int gcd(int a,int b)
-    {
-        if(b==0)
-            return a;
-        
-        return gcd(b,a % b);
-    }
-    
     int findGCD(vector<int>& nums) {
-        int maxNo = nums[0];
-        int minNo = nums[0];
-        for(int i=1; i<nums.size(); i++){
-            if(nums[i]>maxNo)
-                maxNo = nums[i];
-            if(nums[i]<minNo)
-                minNo = nums[i];
+        int min = nums[0], max = nums[0];
+        for(auto n: nums)
+        {
+            if(n > max) 
+                max = n;
+            if(n < min) 
+                min = n;
         }
-        return gcd(maxNo, minNo);
+        
+        int ans = 1;
+        for(int i = 2; i <= max; i++)
+        {
+            if((min % i == 0) && (max % i == 0)) 
+                ans = i;
+        }
+        return ans;
     }
 };
