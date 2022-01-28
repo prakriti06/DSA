@@ -10,7 +10,7 @@ class Solution
     public:
     void sort012(int a[], int n){
          int j = 0, k = n - 1;
-    for (int i = 0; i <= k; ++i){
+    for (int i = 0; i <= k; i++){
         if (a[i] == 0 && i != j)
             swap(a[i--], a[j++]);
         else if (a[i] == 2 && i != k)
