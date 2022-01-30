@@ -8,7 +8,8 @@ public:
             if (side > max) { 
                 cnt = 1; 
                 max = side; 
-            }else if (side == max) { 
+            }
+            else if (side == max) { 
                 cnt++; 
             }
         }
