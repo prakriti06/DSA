@@ -17,17 +17,15 @@ public:
             fast = fast->next->next;
             slow = slow->next;
         }
-        ListNode* prev = nullptr;
-        ListNode* temp;
+        stack<int> s;
         while(slow){
-            temp = slow->next;
-            slow->next = prev;
-            prev = slow;
-            slow = temp;
+            s.push(slow->val);
+            slow = slow->next;
         }
-        while(prev){
-            ans = max(ans, (head->val + prev->val));
-            prev = prev->next;
+       
+        while(!s.empty()){
+            ans = max(ans, s.top() + head->val);
+            s.pop();
             head = head->next;
         }
         return ans;
