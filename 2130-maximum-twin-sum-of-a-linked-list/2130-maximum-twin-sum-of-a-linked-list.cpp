@@ -10,20 +10,33 @@
  */
 class Solution {
 public:
-    ListNode* left = nullptr;
-    int ans = 0;
-    int maxSum(ListNode* right){
-        
-        if(!right)
-            return 0;
-        maxSum(right->next);
-        ans = max(ans, left->val + right->val);
-        left = left->next;
+    int pairSum(ListNode* head) {
+        int ans = 0;
+        ListNode* fast = head, *slow = head;
+        while(fast && fast->next){
+            fast = fast->next->next;
+            slow = slow->next;
+        }
+        ListNode* prev = nullptr;
+        ListNode* temp;
+        while(slow){
+            temp = slow->next;
+            slow->next = prev;
+            prev = slow;
+            slow = temp;
+        }
+        while(prev){
+            ans = max(ans, (head->val + prev->val));
+            prev = prev->next;
+            head = head->next;
+        }
         return ans;
     }
-    
-    int pairSum(ListNode* head) {
-        left = head;
-        return maxSum(head);
-    }
 };
+
+
+
+
+
+
+
