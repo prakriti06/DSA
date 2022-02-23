@@ -14,12 +14,39 @@ public:
         if(list1 == NULL) return list2;
         if(list2 == NULL) return list1;
         
-        if(list1->val < list2->val) {
-            list1->next = mergeTwoLists(list1->next, list2);
-            return list1;
-        } else {
-            list2->next = mergeTwoLists(list2->next, list1);
-            return list2;
+        ListNode* finalHead = nullptr;
+        if(list1->val < list2->val){
+            finalHead = list1;
+            list1 = list1->next;  
         }
+        else{
+            finalHead = list2;
+            list2 = list2->next;
+        }
+        
+        ListNode* temp = finalHead;
+        while(list1 && list2){
+            if(list1->val < list2->val){
+                temp->next = list1;
+                list1 = list1->next;
+            }
+            else{
+                temp->next = list2;
+                list2 = list2->next;
+            }
+            temp = temp->next;
+        }
+        if(list1){
+            temp->next = list1;
+        }
+        if(list2){
+            temp->next = list2;
+        }
+        return finalHead;
     }
 };
+
+
+
+
+
