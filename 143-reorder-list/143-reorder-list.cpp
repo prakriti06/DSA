@@ -11,22 +11,18 @@
 class Solution {
 public:
     void reorderList(ListNode* head) {
-        stack<ListNode*> s;
-        ListNode* temp = head;
-        while(temp){
-            s.push(temp);
-            temp = temp->next;
-        }
-        int n = s.size();
-        ListNode* left = head;
-        for(int i=0; i<n/2; i++){
-            ListNode* right = s.top(); 
-            s.pop();
-            right->next = left->next;
-            left->next = right;
-            left = left->next->next;
-        }
-        left->next = nullptr;
+        if(head==nullptr || head->next==nullptr || head->next->next==nullptr)
+            return;	
+		
+		//2nd last node of list
+        ListNode *last=head;
+        while(last->next->next) 
+            last=last->next;
+			
+        last->next->next=head->next;
+        head->next=last->next;
+        last->next=nullptr;
+        reorderList(head->next->next);
     }
 };
 
