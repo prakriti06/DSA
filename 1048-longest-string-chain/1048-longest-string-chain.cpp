@@ -1,8 +1,7 @@
 class Solution {
 public:
     int longestStrChain(vector<string>& words) {
-         sort(words.begin(), words.end(), [](const string& first, const string& second)
-	{
+         sort(words.begin(), words.end(), [](const string& first, const string& second){
         return first.size() < second.size();
 	});
         map<string,int> m;
