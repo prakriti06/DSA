@@ -13,12 +13,19 @@ using namespace std;
 class Solution{
   public:
     int MissingNumber(vector<int>& array, int n) {
-        int sum =  (n*(n+1))/2;
-        int sumArr = 0;
-        for(int i=0; i<n-1; i++){
-            sumArr += array[i];
+        sort(array.begin(), array.end());
+        int res = 0;
+        for(int i=0; i<n; i++){
+            if(array[i]!=i+1){
+                res = i+1;
+                break;
+            }
         }
-        return sum-sumArr;
+        
+        if(res == 0)
+            res = array[n-2]+1;
+        
+        return res;
     }
 };
 
