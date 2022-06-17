@@ -10,13 +10,8 @@ public:
             mid = (start+end)/2;
             if(nums[mid]>=nums[0])
                 start = mid+1;
-            else if(nums[mid]<nums[0]){
-                if(nums[mid]>nums[mid-1])
-                    end = mid;
-                else 
-                    return nums[mid];
-            }
-                
+            else
+                end = mid;  
         }
         return nums[start];
     }
