@@ -6,8 +6,9 @@ public:
         int i=0;
         while(i < s.size()){
             int count = 1;
-            for(int j=0; j<s[i].length(); j++){
-                if(s[i][j] == ' ')
+            int j=0; 
+            while(j < s[i].length()){
+                if(s[i][j++] == ' ')
                     count++;
             }
             i++;
