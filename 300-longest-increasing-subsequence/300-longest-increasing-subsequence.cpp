@@ -9,7 +9,7 @@ public:
         
         if(prev == -1 || nums[i] > nums[prev])
             len = max(len,1+rec(i+1, i, nums, dp));
-        return dp[i][prev+1]= len;
+        return dp[i][prev+1] = len;
     }
     int lengthOfLIS(vector<int>& nums) {
         int n = nums.size();
