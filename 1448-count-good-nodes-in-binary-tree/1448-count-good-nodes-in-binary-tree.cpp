@@ -12,7 +12,7 @@
 class Solution {
 public:
     int ans=0;
-    void pre(TreeNode* root,int max){
+    void pre(TreeNode* root, int max){
         if(!root)
             return;
         if(root->val >= max){ 
