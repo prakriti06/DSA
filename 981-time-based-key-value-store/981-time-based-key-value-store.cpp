@@ -7,7 +7,6 @@ public:
     }
     
     void set(string key, string value, int timestamp) {
-      // Set the value in map
         mp[key][timestamp]=value;
     }
     
