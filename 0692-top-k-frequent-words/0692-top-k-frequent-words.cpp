@@ -13,14 +13,14 @@ public:
         minHeap.pop();
     }
 
-    vector<string> result;
+    vector<string>res;
     while (minHeap.size()) {
-      result.emplace_back(minHeap.top().second);
+      res.emplace_back(minHeap.top().second);
       minHeap.pop();
     }
 
-    reverse(result.begin(), result.end());
-    return result;
+    reverse(res.begin(), res.end());
+    return res;
   }
 
 private:
