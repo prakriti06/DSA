@@ -20,8 +20,6 @@ public:
         return root;
     }
     TreeNode* sortedArrayToBST(vector<int>& nums) {
-        
        return  formBST(nums,0,nums.size()-1);
-       
     }
 };
