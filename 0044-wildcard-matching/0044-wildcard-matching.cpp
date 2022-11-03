@@ -1,38 +1,26 @@
 class Solution {
 public:
     bool isMatch(string s, string p) {
-        int r = p.size();
-        int c = s.size();
-        vector<bool>arr(c+1,false);
-        vector<bool>brr(c+1,false);
-        arr[0] = true;
-        bool dn = true;
-
-        for(int i=1;i<=r;i++){
-            if(p[i-1]!='*')
-                dn = false;
-            if(dn)
-                brr[0] = true;
-            else
-                brr[0] = false;
-                
-            for(int j=1;j<=c;j++){
-                if(p[i-1]=='?'){
-                    brr[j] = arr[j-1];continue;
-                }
-
-                if(p[i-1]=='*'){
-                    brr[j] = arr[j-1] | arr[j] | brr[j-1];
-                    continue;
-                }
-
-                if(p[i-1]==s[j-1])
-                    brr[j] = arr[j-1];
-                else
-                    brr[j] = false;
+        int m=s.size(),n=p.size();
+        int i=0,j=0,match=-1,star=-1;
+        while(i<m){
+            if(j<n && p[j]=='*'){
+                match = i;
+                star = j++;
             }
-            arr = brr;
+            else if(j<n && (s[i]==p[j] or p[j]=='?')){
+                i++;
+                j++;
+            }
+            else if(star>=0){
+                i=++match;
+                j=star+1;
+            }
+            else 
+                return false;
         }
-        return arr[c];
+        while(j<n && p[j]=='*') 
+            j++;
+        return j==n;
     }
 };
