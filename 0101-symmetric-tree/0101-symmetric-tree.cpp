@@ -12,15 +12,15 @@
 class Solution {
 public:
     bool isSymmetric(TreeNode* root) {
-        if(root==NULL) 
+        if(not root) 
             return true; 
         return isSymmetric(root->left,root->right);
     }
     
     bool isSymmetric(TreeNode* p , TreeNode* q){
-        if(p == NULL && q == NULL)  
+        if(not p and not q)  
             return true; 
-        if(p == NULL || q == NULL) 
+        if(not p || not q) 
             return false; 
         
         if(p->val!=q->val) 
